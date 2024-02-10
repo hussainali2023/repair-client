@@ -33,7 +33,7 @@ const Service = ({ services }: { services: TService[] }) => {
               </span>
             ))}
           </p>
-          <Link href="/" className="mt-4 w-full text-right">
+          <Link href={`/booking/${service._id}`} className="mt-4 w-full text-right">
             <Button type="primary">Book Now</Button>
           </Link>
         </div>

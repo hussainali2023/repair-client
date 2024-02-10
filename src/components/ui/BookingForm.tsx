@@ -20,8 +20,8 @@ const BookingForm = ({ service }: { service: TService }) => {
           layout="vertical"
           name="basic"
           initialValues={{
-            serviceName: service.name,
-            price: service.price,
+            serviceName: service?.name,
+            price: service?.price,
             status: "Pending",
           }}
           autoComplete="off"

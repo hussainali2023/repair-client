@@ -10,7 +10,7 @@ const FeaturedServices = async() => {
     console.log(data)
     return(
         <>
-      <Service services={data.data}></Service>
+      <Service services={data.data.slice(0, 3)}></Service>
         </>
     )
 }
