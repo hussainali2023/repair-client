@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import macbook from "@/assets/images/macbook-exposed.png";
+import macbook from "@/assets/macbook-exposed.png";
 import { Button } from "antd";
 import Image from "next/image";
 

@@ -10,6 +10,7 @@ export type TService = {
 };
 
 const Service = ({ services }: { services: TService[] }) => {
+  console.log(services)
   return (
     <div className="col-span-9 grid grid-cols-3 gap-5 p-10 w-[80%] mx-auto">
       {services?.map((service: TService) => (
