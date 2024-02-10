@@ -1,12 +1,9 @@
+import getAllServices from "@/utils/getAllServices";
 import Service from "./Services";
 
 const FeaturedServices = async() => {
-    const res = await fetch ("http://localhost:5000/api/v1/services",{
-       next: {
-        revalidate: 5,
-       }
-    });
-    const data = await res.json()
+   
+    const data = await getAllServices()
     console.log(data)
     return(
         <>
