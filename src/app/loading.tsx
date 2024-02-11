@@ -1,15 +1,11 @@
 import { Spin } from "antd";
 
-const LoadingPage = () =>{
-    return(
-        <>
-        <div className="flex justify-center my-52">
-    <Spin />
-    <br />
-    <p className=" pl-4">Loading</p>
-  </div>
-        </>
-    )
-}
+const Loading = () => {
+  return (
+    <div className="h-screen flex justify-center items-center">
+      <Spin size="large" />
+    </div>
+  );
+};
 
-export default LoadingPage;
+export default Loading;

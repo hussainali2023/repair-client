@@ -3,14 +3,6 @@
 import { Button, Form, Input } from "antd";
 import { TService } from "./Services";
 
-type TFormValues = {
-  serviceName: string;
-  price: string;
-  fullName: string;
-  email: string;
-  phone: string;
-};
-
 const BookingForm = ({ service }: { service: TService }) => {
   return (
     <div className="flex justify-center py-12">
@@ -20,8 +12,8 @@ const BookingForm = ({ service }: { service: TService }) => {
           layout="vertical"
           name="basic"
           initialValues={{
-            serviceName: service?.name,
-            price: service?.price,
+            serviceName: service.name,
+            price: service.price,
             status: "Pending",
           }}
           autoComplete="off"

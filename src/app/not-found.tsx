@@ -1,9 +1,9 @@
-const NotFound =() =>{
-    return (
-        <>
-        <h1 className=" my-48 text-2xl text-center font-semibold">404 Page Not Found</h1>
-        </>
-    )
-}
+const NotFoundPage = () => {
+  return (
+    <div className="h-screen flex justify-center items-center">
+      <h1 className="lg:text-4xl md:text-2xl text-xl">404! Page Not Found!</h1>
+    </div>
+  );
+};
 
-export default NotFound;
+export default NotFoundPage;

@@ -10,7 +10,6 @@ export type TService = {
 };
 
 const Service = ({ services }: { services: TService[] }) => {
-  console.log(services)
   return (
     <div className="col-span-9 grid grid-cols-3 gap-5 p-10 w-[80%] mx-auto">
       {services?.map((service: TService) => (
@@ -33,7 +32,10 @@ const Service = ({ services }: { services: TService[] }) => {
               </span>
             ))}
           </p>
-          <Link href={`/booking/${service._id}`} className="mt-4 w-full text-right">
+          <Link
+            href={`/booking/${service._id}`}
+            className="mt-4 w-full text-right"
+          >
             <Button type="primary">Book Now</Button>
           </Link>
         </div>

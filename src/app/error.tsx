@@ -1,12 +1,10 @@
-"use client"
+"use client";
 const ErrorPage = () => {
-    return (
-        <>
-        <div>
-            <h1>This is error page</h1>
-        </div>
-        </>
-    )
-}
+  return (
+    <div className="h-screen flex justify-center items-center">
+      <h1 className="lg:text-4xl md:text-2xl text-xl">Something went wrong</h1>
+    </div>
+  );
+};
 
 export default ErrorPage;

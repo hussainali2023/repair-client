@@ -1,82 +1,49 @@
-"use client"
+"use client";
+import { Drawer, Layout, Menu } from "antd";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import React, { useState } from 'react';
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+const { Content, Sider } = Layout;
 
-const { Header, Content, Footer, Sider } = Layout;
+const Sidebar = ({ children }: { children: React.ReactNode }) => {
+  const adminItems = [
+    { key: "1", label: "Dashboard", href: "/dashboard" },
+    { key: "2", label: "Manage Services", href: "/admin/manage-services" },
+    { key: "3", label: "My Bookings", href: "/user/my-bookings" },
+    { key: "4", label: "Back Home", href: "/" },
+  ];
 
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-
-const items: MenuItem[] = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
-];
-
-const SideBar = ({children}: {children: React.ReactNode}) => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const pathname = usePathname();
+  const getSelectedKey = () => {
+    return adminItems.find((item) => item.href === pathname)?.key || "";
+  };
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-      </Sider>
-      <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
+    <Layout>
+      <Content>
+        <Layout className="lg:flex hidden">
+          <Sider
+            width={250}
+            className="min-h-screen bg-[#1677ff] m-6 py-2 rounded-xl"
           >
-            {children}
-          </div>
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
-      </Layout>
+            <Menu
+              className="h-full px-3 font-semibold  bg-transparent py-1"
+              mode="inline"
+              defaultSelectedKeys={[getSelectedKey()]}
+              selectedKeys={[getSelectedKey()]}
+            >
+              {adminItems?.map((item) => (
+                <Menu.Item key={item.key} className="text-blue-900">
+                  <Link href={item.href}>{item.label}</Link>
+                </Menu.Item>
+              ))}
+            </Menu>
+          </Sider>
+          <Content className=" p-6 pl-0 min-h-screen">{children}</Content>
+        </Layout>
+      </Content>
     </Layout>
   );
 };
 
-export default SideBar;
+export default Sidebar;

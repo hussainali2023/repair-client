@@ -1,8 +1,8 @@
 "use client";
 
-import { Layout, Menu, Typography } from "antd";
+import { Button, Layout, Menu, Typography } from "antd";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -15,6 +15,7 @@ const items = [
 
 const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <Layout className="layout shadow-lg">
@@ -37,6 +38,17 @@ const Navbar = () => {
               <Link href={item.href}>{item.label}</Link>
             </Menu.Item>
           ))}
+          <Button
+            className="ml-4"
+            ghost
+            size="large"
+            type="primary"
+            onClick={() => {
+              router.push("/login");
+            }}
+          >
+            Login
+          </Button>
         </Menu>
       </Header>
     </Layout>
